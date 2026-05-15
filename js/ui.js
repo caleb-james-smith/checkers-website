@@ -68,6 +68,7 @@ function renderBoard() {
   boardEl.innerHTML = '';
   boardEl.classList.toggle('game-over', !!state.gameOver);
   boardEl.classList.toggle('ai-turn', !state.gameOver && currentPlayer().isAI);
+  boardEl.classList.toggle('flipped', state.mode === 'hvh' && !state.gameOver && state.currentColor === 'white');
 
   for (let row = 0; row < 8; row++) {
     for (let col = 0; col < 8; col++) {

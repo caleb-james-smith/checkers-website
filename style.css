@@ -253,6 +253,7 @@ body {
   overflow: hidden;
   user-select: none;
   cursor: default;
+  transition: transform 0.0s ease;
 }
 
 .square {
@@ -299,6 +300,12 @@ body {
 
 #board.ai-turn .piece,
 #board.game-over .piece { cursor: default; }
+
+/* HvH board flip — rotates board 180°; counter-rotates pieces to stay upright */
+#board.flipped                { transform: rotate(180deg); }
+#board.flipped .piece         { transform: rotate(180deg); }
+#board.flipped .piece:hover   { transform: rotate(180deg) scale(1.07); }
+#board.flipped .piece.lifted  { transform: rotate(180deg) scale(1.12); }
 
 .piece.red {
   background: radial-gradient(circle at 36% 32%, var(--piece-red-hi), var(--piece-red) 68%);
