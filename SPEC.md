@@ -45,7 +45,7 @@ Code is separated into dedicated files:
 
 | Mode | Description |
 |------|-------------|
-| Human vs Human | Two players alternate turns on the same screen. |
+| Human vs Human | Two players alternate turns on the same screen. The board flips 180° on each turn so the active player always sees their pieces at the bottom. |
 | Human vs AI | Human plays against the AI. |
 | AI vs AI | Both sides are controlled by the AI; moves play out automatically with a short delay. |
 
@@ -73,7 +73,8 @@ Code is separated into dedicated files:
 
 - Each player has an editable text box displaying their name.
 - Name changes take effect live across all places the name appears (score card, turn status).
-- In AI slots, the name field is read-only and displays "AI".
+- AI slots default to "AI" (Human vs AI) or "AI 1" / "AI 2" (AI vs AI) but are editable.
+- If an AI name field is cleared and blurred, it reverts to its mode-appropriate default.
 
 ---
 

@@ -76,6 +76,10 @@ checkers-website/
 - Verify light/dark mode toggle and system preference detection.
 - Check score persistence and color alternation across multiple games.
 - Visual polish: spacing, typography, transitions on piece movement/highlight.
+- Winner score card highlight (gold border); game-over status bar (bold, accent color).
+- Board cursor management: `cursor: default` on pieces during AI turn or game over.
+- HvH board flip: CSS `rotate(180deg)` on `#board` with 0.4 s transition; pieces counter-rotated.
+- AI player names made editable with mode-aware empty-field fallback.
 
 ---
 

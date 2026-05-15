@@ -26,6 +26,8 @@ Never merge these into fewer files or add a build tool without explicit instruct
 
 **Highlights**: Last-move (yellow) and hover/potential-move (blue) highlights are CSS classes on square elements, not inline styles.
 
+**HvH board flip**: In Human vs Human mode, `#board` receives a `flipped` CSS class when it is White's turn (`transform: rotate(180deg)`), so each player always sees their pieces at the bottom. Pieces are counter-rotated to stay upright. The class is never applied during game over. Do not re-render in reversed row order — the CSS approach animates smoothly and keeps all click/hover logic unchanged.
+
 ## Game Rules to Preserve
 
 - Red always moves first at the start of a game.

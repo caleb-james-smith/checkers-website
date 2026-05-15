@@ -60,6 +60,24 @@ Highlights (yellow for last move, blue for hover/potential) are applied as addit
 
 ---
 
+## HvH Board Flip: CSS `rotate(180deg)` on `#board`
+
+In Human vs Human mode the board rotates 180° between turns so each player sees their own pieces at the bottom. This is implemented by toggling a `flipped` CSS class on `#board` (`transform: rotate(180deg); transition: transform 0.4s ease`) and counter-rotating each piece (`rotate(180deg)`) so pieces remain upright. Hover and lifted states combine the counter-rotation with their scale transforms.
+
+**Why CSS rotation rather than re-rendering in reversed row order:** Re-rendering avoids the need to counter-rotate pieces, but it destroys and recreates the DOM on every flip, cannot be animated, and gives no smooth visual transition. CSS rotation gives a fluid 0.4 s spin with no DOM churn; browsers correctly route pointer events through CSS transforms so click and hover handling are unaffected.
+
+**Trade-off:** The board snaps back to the standard (Red-at-bottom) orientation on game over, because `flipped` is only applied when `!state.gameOver`. This avoids the awkward case where the board is flipped from the loser's perspective when the win is announced.
+
+---
+
+## AI Player Names: Editable with Mode-Aware Fallback
+
+AI name inputs are editable (no `readonly` attribute). If the field is cleared and blurred, the blur handler restores a mode-appropriate default: `"AI"` in Human vs AI, `"AI 1"` / `"AI 2"` in AI vs AI.
+
+**Why:** Allowing custom AI names (e.g. "Deep Blue") is a minor UX improvement with no downside. The fallback on empty blur prevents a nameless player from breaking the status bar text.
+
+---
+
 ## Score Persistence: Session-Only (In-Memory)
 
 Scores are stored in the `GameState` JS object and reset when the user returns to the mode selection screen.

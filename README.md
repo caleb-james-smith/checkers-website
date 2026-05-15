@@ -17,7 +17,7 @@ On load you'll see three mode buttons:
 
 | Mode | Description |
 |------|-------------|
-| Human vs Human | Two players share the same screen and alternate turns. |
+| Human vs Human | Two players share the same screen and alternate turns. The board flips automatically so each player always faces their own pieces from the bottom. |
 | Human vs AI | You play against the computer. |
 | AI vs AI | Watch two computer opponents play each other. |
 
@@ -44,7 +44,7 @@ When at least one player is the AI, an **Easy / Medium / Hard** difficulty selec
 
 ### Player Names & Scores
 
-- Each player's name can be edited directly in the score card text box; changes appear live everywhere the name is shown.
+- Each player's name (including AI players) can be edited directly in the score card text box; changes appear live everywhere the name is shown.
 - Scores accumulate across games in a session: **1 point** for a win, **0.5** for a draw, **0** for a loss.
 - Scores reset when you return to the mode selection screen.
 
