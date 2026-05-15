@@ -129,15 +129,15 @@ function renderScoreCards() {
 }
 
 function renderStatus() {
-  const el = document.getElementById(‘status-bar’);
+  const el = document.getElementById('status-bar');
   if (state.gameOver) {
     const winner = playerFor(state.gameOver);
     el.textContent = `${winner.name} wins! (${cap(state.gameOver)})`;
-    el.classList.add(‘game-over’);
+    el.classList.add('game-over');
   } else {
     const p = currentPlayer();
-    el.textContent = `${p.name}’s turn — ${cap(state.currentColor)}`;
-    el.classList.remove(‘game-over’);
+    el.textContent = `${p.name}'s turn — ${cap(state.currentColor)}`;
+    el.classList.remove('game-over');
   }
 }
 
