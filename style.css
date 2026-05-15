@@ -33,6 +33,8 @@
   --accent-hover:      #3d6b4c;
   --card-active-bg:    #eaf3ed;
   --card-active-ring:  rgba( 74, 124,  89, 0.30);
+  --card-winner-bg:    #fffbea;
+  --card-winner-ring:  rgba(180, 140,   0, 0.28);
   --btn-bg:            #e8e0d0;
   --btn-fg:            #2c2318;
   --btn-hover:         #ddd4c0;
@@ -50,6 +52,8 @@
   --accent-hover:      #508860;
   --card-active-bg:    #192219;
   --card-active-ring:  rgba( 94, 158, 116, 0.30);
+  --card-winner-bg:    #1e1c10;
+  --card-winner-ring:  rgba(200, 160,   0, 0.25);
   --btn-bg:            #2c2820;
   --btn-fg:            #e8e0d0;
   --btn-hover:         #36302a;
@@ -293,6 +297,9 @@ body {
 
 .square.dark .piece { cursor: pointer; }
 
+#board.ai-turn .piece,
+#board.game-over .piece { cursor: default; }
+
 .piece.red {
   background: radial-gradient(circle at 36% 32%, var(--piece-red-hi), var(--piece-red) 68%);
   border: 3px solid var(--piece-red-rim);
@@ -335,6 +342,13 @@ body {
   min-height: 1.5em;
   text-align: center;
   letter-spacing: 0.01em;
+  transition: font-size 0.15s, color 0.15s;
+}
+
+#status-bar.game-over {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent);
 }
 
 /* ── Game controls ────────────────────────────────────────────────────── */
@@ -384,6 +398,12 @@ body {
   border-color: var(--accent);
   background: var(--card-active-bg);
   box-shadow: 0 0 0 3px var(--card-active-ring);
+}
+
+.score-card.winner {
+  border-color: #b8960a;
+  background: var(--card-winner-bg);
+  box-shadow: 0 0 0 3px var(--card-winner-ring);
 }
 
 /* Colour swatch mirrors piece appearance */

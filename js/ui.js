@@ -66,6 +66,8 @@ function renderBoard() {
   hoverSqs = [];   // full re-render invalidates any tracked hover state
   const boardEl = document.getElementById('board');
   boardEl.innerHTML = '';
+  boardEl.classList.toggle('game-over', !!state.gameOver);
+  boardEl.classList.toggle('ai-turn', !state.gameOver && currentPlayer().isAI);
 
   for (let row = 0; row < 8; row++) {
     for (let col = 0; col < 8; col++) {
@@ -120,17 +122,22 @@ function renderScoreCards() {
     if (document.activeElement !== nameEl) nameEl.value = player.name;
 
     const isActive = !state.gameOver && player.color === state.currentColor;
+    const isWinner = !!state.gameOver && player.color === state.gameOver;
     card.classList.toggle('active', isActive);
+    card.classList.toggle('winner', isWinner);
   });
 }
 
 function renderStatus() {
-  const el = document.getElementById('status-bar');
+  const el = document.getElementById(‘status-bar’);
   if (state.gameOver) {
-    el.textContent = playerFor(state.gameOver).name + ' wins!';
+    const winner = playerFor(state.gameOver);
+    el.textContent = `${winner.name} wins! (${cap(state.gameOver)})`;
+    el.classList.add(‘game-over’);
   } else {
     const p = currentPlayer();
     el.textContent = `${p.name}’s turn — ${cap(state.currentColor)}`;
+    el.classList.remove(‘game-over’);
   }
 }
 
