@@ -37,4 +37,4 @@ Never merge these into fewer files or add a build tool without explicit instruct
 
 ## Spec, Plan, and Decisions
 
-Before writing code, consult `SPEC.md`, `PLAN.md`, and `DECISIONS.md`. Record any new architectural or design choices in `DECISIONS.md`.
+Before writing code, consult `docs/SPEC.md`, `docs/PLAN.md`, and `docs/DECISIONS.md`. Record any new architectural or design choices in `docs/DECISIONS.md`.
