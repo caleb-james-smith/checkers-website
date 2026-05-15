@@ -2,12 +2,45 @@
 
 A browser-based Standard American Checkers game with three game modes and a computer opponent. No installation or build step required.
 
-## Setup
+## Setup (Local)
 
-1. Clone or download this repository.
-2. Open `index.html` in any modern web browser.
+**1. Clone the repository**
 
-That's it — no server, no dependencies, no npm.
+```bash
+git clone https://github.com/caleb-james-smith/checkers-website.git
+cd checkers-website
+```
+
+**2. Open `index.html` in your browser**
+
+macOS:
+```bash
+open index.html
+```
+
+Windows:
+```bash
+start index.html
+```
+
+Linux:
+```bash
+xdg-open index.html
+```
+
+No server, no dependencies, no npm.
+
+## Deploy on GitHub Pages
+
+The live site is hosted at **https://caleb-james-smith.github.io/checkers-website/**.
+
+To enable GitHub Pages for your own fork:
+
+1. Go to **Settings → Pages** in your GitHub repository.
+2. Under **Source**, select **Deploy from a branch**.
+3. Choose the **main** branch and the **/ (root)** folder, then click **Save**.
+
+GitHub will publish the site in about a minute. No build step is needed — `index.html` is served directly.
 
 ## How to Play
 
