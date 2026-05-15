@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkers</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Always-visible theme toggle -->
+  <button id="theme-toggle" aria-label="Toggle light/dark mode">◐</button>
+
+  <!-- ── Mode selection screen ───────────────────────────────────────────── -->
+  <div id="mode-screen" class="screen">
+    <h1>Checkers</h1>
+
+    <!-- Step 1: choose a mode (clicking one reveals difficulty if needed) -->
+    <section class="mode-options">
+      <button class="mode-btn" data-mode="hvh">Human vs Human</button>
+      <button class="mode-btn" data-mode="hva">Human vs AI</button>
+      <button class="mode-btn" data-mode="ava">AI vs AI</button>
+    </section>
+
+    <!-- Step 2: difficulty — shown only when at least one player is AI -->
+    <section id="difficulty-section" class="hidden">
+      <p class="section-label">AI Difficulty</p>
+      <div class="diff-options">
+        <button class="diff-btn" data-diff="easy">Easy</button>
+        <button class="diff-btn" data-diff="medium">Medium</button>
+        <button class="diff-btn" data-diff="hard">Hard</button>
+      </div>
+    </section>
+
+    <!-- Step 3: start (shown after a mode is chosen) -->
+    <button id="start-btn" class="hidden">Start Game</button>
+  </div>
+
+  <!-- ── Game screen ─────────────────────────────────────────────────────── -->
+  <div id="game-screen" class="screen hidden">
+
+    <div class="game-layout">
+
+      <!-- Left score card (Player 1) -->
+      <aside class="score-card" id="score-card-0">
+        <div class="color-swatch" id="swatch-0"></div>
+        <input type="text" id="name-0" class="player-name"
+               maxlength="20" spellcheck="false" autocomplete="off">
+        <p class="score-label">Score</p>
+        <p class="score-value" id="score-0">0</p>
+      </aside>
+
+      <!-- Centre column: board + status + controls -->
+      <div class="board-area">
+        <!--
+          #board is populated by ui.js with 64 square divs.
+          Dark squares carry data-sq="0..31"; light squares have no data-sq.
+          Pieces are child divs with class "piece red|white [king]".
+        -->
+        <div id="board" role="grid" aria-label="Checkers board"></div>
+
+        <p id="status-bar"></p>
+
+        <div class="game-controls">
+          <!-- Pause/Resume only visible in AI vs AI mode -->
+          <button id="pause-btn" class="hidden">Pause</button>
+          <button id="new-game-btn">New Game</button>
+          <button id="change-mode-btn">Change Mode</button>
+        </div>
+      </div>
+
+      <!-- Right score card (Player 2) -->
+      <aside class="score-card" id="score-card-1">
+        <div class="color-swatch" id="swatch-1"></div>
+        <input type="text" id="name-1" class="player-name"
+               maxlength="20" spellcheck="false" autocomplete="off">
+        <p class="score-label">Score</p>
+        <p class="score-value" id="score-1">0</p>
+      </aside>
+
+    </div>
+
+  </div>
+
+  <script src="js/game.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>
