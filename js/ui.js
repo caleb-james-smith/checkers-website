@@ -116,7 +116,7 @@ function renderScoreCards() {
 
     swatch.className    = 'color-swatch ' + player.color;
     scoreEl.textContent = formatScore(player.score);
-    nameEl.readOnly     = player.isAI;
+    nameEl.readOnly     = false;
 
     // Don't overwrite the input while the user is actively editing it
     if (document.activeElement !== nameEl) nameEl.value = player.name;
@@ -377,11 +377,14 @@ document.getElementById('start-btn').addEventListener('click', () => {
   });
 
   input.addEventListener('blur', () => {
-    if (!state || state.players[i].isAI) return;
+    if (!state) return;
     if (input.value.trim() === '') {
-      const fallback = `Player ${i + 1}`;
+      const p = state.players[i];
+      const fallback = p.isAI
+        ? (state.mode === 'ava' ? `AI ${i + 1}` : 'AI')
+        : `Player ${i + 1}`;
       input.value = fallback;
-      state.players[i].name = fallback;
+      p.name = fallback;
       renderStatus();
     }
   });
